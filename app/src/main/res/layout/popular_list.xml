@@ -21,17 +21,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-    <TextView
-        android:text="tvMain"
-        android:id="@+id/tvMain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
-    <TextView
-        android:text="tvSub"
-        android:id="@+id/tvSub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <TextView
+                android:text="product_name"
+                android:id="@+id/product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="product_price"
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="product_status"
+                android:id="@+id/product_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="product_content"
+                android:id="@+id/product_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
