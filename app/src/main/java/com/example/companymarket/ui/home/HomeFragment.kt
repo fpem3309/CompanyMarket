@@ -16,8 +16,8 @@ class HomeFragment : Fragment() {
   private val binding get() = _binding!!
 
   // RecyclerView.adapter에 지정할 Adapter
-  private lateinit var popularAdapter: PopularAdapter
-  private lateinit var recyclerview : RecyclerView
+  //private lateinit var popularAdapter: PopularAdapter
+  //private lateinit var recyclerview : RecyclerView
 
   private val dataSet: ArrayList<List<String>> = arrayListOf()
 
