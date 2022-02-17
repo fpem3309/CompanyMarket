@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.companymarket.PopularAdapter
-import com.example.companymarket.TestData
 import com.example.companymarket.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
 
@@ -30,7 +29,7 @@ class HomeFragment : Fragment() {
     _binding = FragmentHomeBinding.inflate(inflater, container, false)
     val view = binding.root
     addData()
-    binding.recyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+    binding.recyclerview.layoutManager = GridLayoutManager(context,2)
     binding.recyclerview.adapter = PopularAdapter(dataSet)
     binding.recyclerview.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
     return view
@@ -40,23 +39,10 @@ class HomeFragment : Fragment() {
     super.onDestroyView()
     _binding = null
   }
+
   private fun addData() {
-    for (i in 0..99) {
+    for (i in 1..10) {
       dataSet.add(listOf("$i th main", "$i th sub"))
     }
-// return inflater.inflate(R.layout.fragment_home, container, false)
-
-//  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//    super.onViewCreated(view, savedInstanceState)
-//
-//    var list: ArrayList<TestData> = requireActivity().intent!!.extras!!.get("DataList") as ArrayList<TestData>
-//    Log.e("FirstFragment", "Data List: ${list}")
-//
-//    // Fragment에서 전달받은 list를 넘기면서 ListAdapter 생성
-//    popularAdapter = PopularAdapter(list)
-//    recyclerview.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-//    // RecyclerView.adapter에 지정
-//    recyclerview.adapter = popularAdapter
-//  }
   }
 }

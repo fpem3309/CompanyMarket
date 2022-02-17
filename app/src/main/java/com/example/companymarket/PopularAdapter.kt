@@ -31,8 +31,5 @@ class PopularAdapter(private val dataSet: ArrayList<List<String>>): RecyclerView
             binding.tvMain.text = data[0]
             binding.tvSub.text = data[1]
         }
-
-
     }
-
 }
