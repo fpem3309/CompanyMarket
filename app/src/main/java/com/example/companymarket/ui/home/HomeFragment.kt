@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
   override fun onResume() {
     super.onResume()
     popularAdapter.addData("맥북 에어", 1160000, Status.Sale, listOf(1160000, 100000))
-    popularAdapter.addData("맥북 프로", 1560000, Status.Sale, listOf(1560000, 130000))
+    popularAdapter.addData("맥북 프로", 1560000, Status.Soldout, listOf(1560000, 130000))
     binding.recyclerview.adapter = popularAdapter
 
   }
