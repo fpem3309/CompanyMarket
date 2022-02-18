@@ -1,8 +1,10 @@
 package com.example.companymarket
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.companymarket.databinding.PopularListBinding
 
@@ -24,21 +26,29 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder> () {
     }
 
     // ViewHolder의 bind 메소드를 호출한다.
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PopularAdapter.ViewHolder, position: Int) {
         holder.bind(dataSet[position])
+
+        holder.itemView.setOnClickListener{
+            Log.d("ddd", position.toString())
+            val intent = Intent(holder.itemView.context,ContentActivity::class.java)
+            ContextCompat.startActivity(holder.itemView.context, intent, null)
+        }
     }
+
 
     override fun getItemCount(): Int {
         return dataSet.size
     }
 
     class ViewHolder(private val binding: PopularListBinding) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(data:PopularProduct){
             binding.productName.text = "Name: ${data.product_name}"
             binding.productPrice.text = "Price: ${data.product_price}"
             binding.productStatus.text = "Status: ${data.product_status}"
             binding.productContent.text = "Content: ${data.product_content}"
-
         }
     }
+
 }
