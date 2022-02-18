@@ -2,15 +2,14 @@ package com.example.companymarket
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.companymarket.databinding.PopularListBinding
 
-class PopularAdapter(
+class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder> () {
+
     private val dataSet: ArrayList<PopularProduct> = arrayListOf()
-    ): RecyclerView.Adapter<PopularAdapter.ViewHolder> () {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -21,6 +20,7 @@ class PopularAdapter(
     fun addData(name: String, price: Int, status: Status, content: List<Int>){
         dataSet.add(PopularProduct(name, price, status, content))
         notifyItemInserted(dataSet.size)
+        Log.d("data", dataSet.toString());
     }
 
     // ViewHolder의 bind 메소드를 호출한다.
@@ -33,10 +33,6 @@ class PopularAdapter(
     }
 
     class ViewHolder(private val binding: PopularListBinding) : RecyclerView.ViewHolder(binding.root) {
-//        fun bind(data: List<String>) {
-//            binding.tvMain.text = data[0]
-//            binding.tvSub.text = data[1]
-//        }
         fun bind(data:PopularProduct){
             binding.productName.text = "Name: ${data.product_name}"
             binding.productPrice.text = "Price: ${data.product_price}"

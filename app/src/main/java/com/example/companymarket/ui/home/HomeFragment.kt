@@ -19,9 +19,9 @@ class HomeFragment : Fragment() {
   // RecyclerView.adapter에 지정할 Adapter
   //private lateinit var popularAdapter: PopularAdapter
   //private lateinit var recyclerview : RecyclerView
-  private val ppAdapter = PopularAdapter()
 
-  private val dataSet: ArrayList<PopularProduct> = arrayListOf()
+  private val popularAdapter =  PopularAdapter()
+//  private val dataSet: ArrayList<PopularProduct> = arrayListOf()
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
@@ -31,16 +31,17 @@ class HomeFragment : Fragment() {
     _binding = FragmentHomeBinding.inflate(inflater, container, false)
     val view = binding.root
 
-    ppAdapter.addData("멕북에어", 100000, Status.Sale, listOf(100000,90000))
-    ppAdapter.addData("멕북프로", 200000, Status.Sale, listOf(200000,190000))
-    ppAdapter.addData("멕북맥스", 300000, Status.Sale, listOf(300000,290000))
-    ppAdapter.addData("멕", 500000, Status.Sale, listOf(500000,490000))
-    ppAdapter.addData("멕미니", 400000, Status.Sale, listOf(400000,390000))
-
     binding.recyclerview.layoutManager = GridLayoutManager(context,2)
-    binding.recyclerview.adapter = PopularAdapter(dataSet)
     binding.recyclerview.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+
     return view
+  }
+
+  override fun onResume() {
+    super.onResume()
+    popularAdapter.addData("멕북 에어", 1160000, Status.Sale, listOf(1160000,100000))
+    popularAdapter.addData("멕북 프로", 1560000, Status.Sale, listOf(1560000,130000))
+    binding.recyclerview.adapter = popularAdapter
   }
 
   override fun onDestroyView() {
