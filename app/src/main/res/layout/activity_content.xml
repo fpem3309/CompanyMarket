@@ -32,11 +32,12 @@
         app:layout_constraintTop_toBottomOf="@+id/getProductPrice" />
 
     <TextView
-        android:text="test"
         android:id="@+id/getProductContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="test"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getProductStatus" />
 

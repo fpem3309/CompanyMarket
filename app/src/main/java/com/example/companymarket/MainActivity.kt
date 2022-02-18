@@ -1,5 +1,6 @@
 package com.example.companymarket
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -10,6 +11,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.example.companymarket.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +42,33 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+//        @Database(entities = [User::class], version = 1)
+//        abstract class AppDatabase : RoomDatabase() {
+//            abstract fun userDao(): UserDao
+//        }
+//
+//        val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "database-name").build()
+//
+//        var user1 = User(0, "Hong", "Gildong")
+//        var user2 = User(1, "Kim", "Gildong")
+//
+//        db.userDao().insertAll(user1);
+//        db.userDao().insertAll(user2);
+//
+//        val userset = db.userDao().getAll()
+//        for (u in userset) {
+//            Log.d("user", u.toString())
+//        }
+//        db.userDao().getAll()
+
     }
+
+
+
+
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

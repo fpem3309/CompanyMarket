@@ -1,6 +1,7 @@
 package com.example.companymarket
 
 import android.content.Intent
+import android.media.Image
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,8 +19,8 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder> () {
         val binding = PopularListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
-    fun addData(name: String, price: Int, status: Status, content: List<Int>){
-        dataSet.add(PopularProduct(name, price, status, content))
+    fun addData( name: String, price: Int, status: Status, content: List<Int>){
+        dataSet.add(PopularProduct( name, price, status, content))
         notifyItemInserted(dataSet.size)
         Log.d("Frg -> adapter data", dataSet.toString());
     }
