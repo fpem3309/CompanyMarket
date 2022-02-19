@@ -2,12 +2,25 @@ package com.example.companymarket;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class ContentActivity extends AppCompatActivity {
     TextView tv_getProductName, tv_getProductPrice, tv_getProductStatus, tv_getProductContent;
+    private FirebaseDatabase database;
+    private DatabaseReference databaseReference;
+    private ArrayList<User> arrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +42,31 @@ public class ContentActivity extends AppCompatActivity {
         tv_getProductName.setText(getProductName);
         tv_getProductPrice.setText(getProductPrice);
         tv_getProductStatus.setText(getProductStatus);
+
+        arrayList = new ArrayList<>();
+
+        database = FirebaseDatabase.getInstance(); // 파이어 데이터베이스 연동
+        databaseReference = database.getReference("User"); // 파이어베이스 User테이블 연결
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // 파이어 베이스 데이터 받아옴
+                arrayList.clear(); //배열리스트 초기화
+                for(DataSnapshot snapshot1 : snapshot.getChildren()){
+                    User user = snapshot1.getValue(User.class);
+                    arrayList.add(user);
+                    Log.d("user", String.valueOf(arrayList));
+                    System.out.println( arrayList.get(0).getId());
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("user_error", String.valueOf(error.toException()));
+            }
+        });
     }
 
 

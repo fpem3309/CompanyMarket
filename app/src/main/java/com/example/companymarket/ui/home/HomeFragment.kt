@@ -12,6 +12,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.companymarket.*
 import com.example.companymarket.databinding.FragmentHomeBinding
+import com.google.firebase.database.FirebaseDatabase
 
 class HomeFragment : Fragment() {
 
