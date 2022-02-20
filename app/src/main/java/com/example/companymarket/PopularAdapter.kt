@@ -1,11 +1,12 @@
 package com.example.companymarket
 
 import android.content.Intent
-import android.graphics.Insets.add
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.companymarket.databinding.PopularListBinding
 
 class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder> () {
@@ -13,8 +14,8 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder> () {
     private var arrayList: ArrayList<Product> = arrayListOf()
     private val dataSet: ArrayList<PopularProduct> = arrayListOf()
 
-    fun getPopularAdapter(productDataset: List<Product>) {
-        this.arrayList = productDataset as ArrayList<Product>
+    fun getPopularAdapter(productDataset : ArrayList<Product>) {
+        this.arrayList = productDataset
         Log.d("array_data", arrayList.toString())
     }
 
@@ -33,32 +34,58 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder> () {
 
     // ViewHolder의 bind 메소드를 호출한다.
     override fun onBindViewHolder(holder: PopularAdapter.ViewHolder, position: Int) {
-        holder.bind(dataSet[position])
+        //holder.bind(dataSet[position])
+        holder.bind(arrayList[position])
     }
 
 
     override fun getItemCount(): Int {
-        return dataSet.size
+        return arrayList.size
     }
 
     class ViewHolder(private val binding: PopularListBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data:PopularProduct){
-            binding.productName.text = "Name: ${data.product_name}"
-            binding.productPrice.text = "Price: ${data.product_price}"
-            binding.productStatus.text = "Status: ${data.product_status}"
-            binding.productContent.text = "Content: ${data.product_content}"
+        fun bind(data: Product){
+            //binding.productImage.setImageResource("${data.pro_Image}")
+            Glide.with(itemView).load("${data.pro_Image}").into(binding.productImage)
+            binding.productName.text = "Name: ${data.pro_name}"
+            binding.productPrice.text = "Price: ${data.pro_price}"
+            binding.productStatus.text = "Status: ${data.pro_status}"
+            binding.productContent.text = "Content: ${data.pro_content}"
 
             itemView.setOnClickListener {
                 Intent(itemView.context, ContentActivity::class.java).apply {
-                    putExtra("product_name",data.product_name)
-                    putExtra("product_price",data.product_price.toString())
-                    putExtra("product_status",data.product_status.toString())
+                    putExtra("product_Image",data.pro_Image)
+                    putExtra("product_name",data.pro_name)
+                    putExtra("product_price",data.pro_price.toString())
+                    putExtra("product_status",data.pro_status.toString())
+                    putExtra("product_content",data.pro_content.toString())
 
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 }.run { itemView.context.startActivity(this) }
             }
         }
+
+//        fun bind(data:PopularProduct){
+//            binding.productName.text = "Name: ${data.product_name}"
+//            binding.productPrice.text = "Price: ${data.product_price}"
+//            binding.productStatus.text = "Status: ${data.product_status}"
+//            binding.productContent.text = "Content: ${data.product_content}"
+//
+//            itemView.setOnClickListener {
+//                Intent(itemView.context, ContentActivity::class.java).apply {
+//                    putExtra("product_name",data.product_name)
+//                    putExtra("product_price",data.product_price.toString())
+//                    putExtra("product_status",data.product_status.toString())
+//
+//                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                }.run { itemView.context.startActivity(this) }
+//            }
+//        }
     }
+
+}
+
+private fun ImageView.setImageResource(s: String) {
 
 }

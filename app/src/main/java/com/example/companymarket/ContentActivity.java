@@ -1,13 +1,19 @@
 package com.example.companymarket;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,6 +24,7 @@ import java.util.ArrayList;
 
 public class ContentActivity extends AppCompatActivity {
     TextView tv_getProductName, tv_getProductPrice, tv_getProductStatus, tv_getProductContent;
+    ImageView iv_getProductImage;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private ArrayList<User> arrayList;
@@ -27,6 +34,7 @@ public class ContentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
 
+        iv_getProductImage = findViewById(R.id.getProductImage);
         tv_getProductName = findViewById(R.id.getProductName);
         tv_getProductPrice= findViewById(R.id.getProductPrice);
         tv_getProductStatus = findViewById(R.id.getProductStatus);
@@ -35,13 +43,20 @@ public class ContentActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
+        String getProductImage = bundle.getString("product_Image");
         String getProductName = bundle.getString("product_name");
         String getProductPrice = bundle.getString("product_price");
         String getProductStatus = bundle.getString("product_status");
+        String getProductContent = bundle.getString("product_content");
+
+
+        Log.d("image_data",getProductImage);
+        Glide.with(this).load(getProductImage).into(iv_getProductImage);
 
         tv_getProductName.setText(getProductName);
         tv_getProductPrice.setText(getProductPrice);
         tv_getProductStatus.setText(getProductStatus);
+        tv_getProductContent.setText(getProductContent);
 
         arrayList = new ArrayList<>();
 

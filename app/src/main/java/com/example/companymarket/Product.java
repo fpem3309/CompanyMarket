@@ -1,6 +1,7 @@
 package com.example.companymarket;
 
 public class Product {
+    private String Pro_Image;
     private String Pro_name;
     private int Pro_price;
     private String Pro_status;
@@ -11,11 +12,12 @@ public class Product {
 
     }
 
-    public Product(String pro_name, int pro_price, String pro_status, String pro_content) {
-        Pro_name = pro_name;
-        Pro_price = pro_price;
-        Pro_status = pro_status;
-        Pro_content = pro_content;
+    public String getPro_Image() {
+        return Pro_Image;
+    }
+
+    public void setPro_Image(String pro_Image) {
+        Pro_Image = pro_Image;
     }
 
     public String getPro_name() {
@@ -53,7 +55,8 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "Pro_name='" + Pro_name + '\'' +
+                "Pro_Image='" + Pro_Image + '\'' +
+                ", Pro_name='" + Pro_name + '\'' +
                 ", Pro_price=" + Pro_price +
                 ", Pro_status='" + Pro_status + '\'' +
                 ", Pro_content='" + Pro_content + '\'' +

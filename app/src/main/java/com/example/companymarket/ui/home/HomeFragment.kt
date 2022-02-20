@@ -11,9 +11,6 @@ import com.example.companymarket.*
 import com.example.companymarket.databinding.FragmentHomeBinding
 import com.google.firebase.database.*
 import java.util.ArrayList
-import org.json.JSONArray
-
-
 
 
 class HomeFragment : Fragment() {
@@ -48,8 +45,8 @@ class HomeFragment : Fragment() {
 
   override fun onResume() {
     super.onResume()
-    popularAdapter.addData("맥북 에어", 1160000, Status.Sale, listOf(1160000, 100000))
-    popularAdapter.addData("맥북 프로", 1560000, Status.Soldout, listOf(1560000, 130000))
+    //popularAdapter.addData("맥북 에어", 1160000, Status.Sale, listOf(1160000, 100000))
+    //popularAdapter.addData("맥북 프로", 1560000, Status.Soldout, listOf(1560000, 130000))
     //binding.recyclerview.adapter = popularAdapter
     //binding.recyclerview.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
@@ -69,6 +66,8 @@ class HomeFragment : Fragment() {
           arrayList!!.add(product!!)
           Log.d("product_data", arrayList.toString())
 
+          popularAdapter.getPopularAdapter(arrayList!!)
+          binding.recyclerview.adapter = popularAdapter //setAdapter
         }
       }
 
@@ -77,9 +76,9 @@ class HomeFragment : Fragment() {
       }
     })
 
-    popularAdapter.getPopularAdapter(arrayList!!)
-    binding.recyclerview.adapter = popularAdapter //setAdapter
 
+//    popularAdapter.getPopularAdapter(arrayList!!)
+//    binding.recyclerview.adapter = popularAdapter //setAdapter
   }
 
 
