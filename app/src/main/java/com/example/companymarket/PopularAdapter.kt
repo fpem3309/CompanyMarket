@@ -1,7 +1,7 @@
 package com.example.companymarket
 
 import android.content.Intent
-import android.media.Image
+import android.graphics.Insets.add
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +10,13 @@ import com.example.companymarket.databinding.PopularListBinding
 
 class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder> () {
 
+    private var arrayList: ArrayList<Product> = arrayListOf()
     private val dataSet: ArrayList<PopularProduct> = arrayListOf()
+
+    fun getPopularAdapter(productDataset: List<Product>) {
+        this.arrayList = productDataset as ArrayList<Product>
+        Log.d("array_data", arrayList.toString())
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
