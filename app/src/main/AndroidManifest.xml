@@ -29,6 +29,8 @@
             android:theme="@style/Theme.CompanyMarket.NoActionBar">
         </activity>
         <activity android:name=".ContentActivity" />
+        <activity android:name=".NewProductActivity" />
+
     </application>
 
 </manifest>
