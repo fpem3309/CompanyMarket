@@ -12,6 +12,9 @@ public class Product {
 
     }
 
+    public Product(String Pro_Image, String Pro_name, int Pro_price, String Pro_status, String Pro_content) {
+    }
+
     public String getPro_Image() {
         return Pro_Image;
     }

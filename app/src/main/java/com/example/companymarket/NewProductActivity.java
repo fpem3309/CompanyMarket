@@ -8,6 +8,12 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class NewProductActivity extends AppCompatActivity {
     EditText edt_productName, edt_productPrice, edt_productStatus, edt_productContent;
     Button btn_addProduct;
@@ -27,6 +33,14 @@ public class NewProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                FirebaseDatabase database = FirebaseDatabase.getInstance(); // 파이어 데이터베이스 연동
+
+                 DatabaseReference product = database.getReference("Product"); // 파이어베이스 Product 테이블 연결
+
+                Map<String,Product> productMap = new HashMap<>();
+                productMap.put("new",new Product("",""+edt_productName.getText().toString(),Integer.parseInt(edt_productPrice.getText().toString()),""+edt_productStatus.getText().toString(),""+edt_productContent.getText().toString()));
+
+                product.setValue(productMap);
             }
         });
     }
