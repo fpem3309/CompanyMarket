@@ -13,6 +13,11 @@ public class Product {
     }
 
     public Product(String Pro_Image, String Pro_name, int Pro_price, String Pro_status, String Pro_content) {
+        this.Pro_Image = Pro_Image;
+        this.Pro_name = Pro_name;
+        this.Pro_price = Pro_price;
+        this.Pro_status = Pro_status;
+        this.Pro_content = Pro_content;
     }
 
     public String getPro_Image() {

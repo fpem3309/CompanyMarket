@@ -35,12 +35,13 @@ public class NewProductActivity extends AppCompatActivity {
 
                 FirebaseDatabase database = FirebaseDatabase.getInstance(); // 파이어 데이터베이스 연동
 
-                 DatabaseReference product = database.getReference("Product"); // 파이어베이스 Product 테이블 연결
+                DatabaseReference databaseReference = database.getReference(); // 파이어베이스 테이블 연결
 
-                Map<String,Product> productMap = new HashMap<>();
-                productMap.put("new",new Product("",""+edt_productName.getText().toString(),Integer.parseInt(edt_productPrice.getText().toString()),""+edt_productStatus.getText().toString(),""+edt_productContent.getText().toString()));
+                databaseReference.child("Product").push().setValue(new Product("aaaa","aaa",2,"aa","aaa"));
+                //Map<String,Product> productMap = new HashMap<>();
+                //productMap.put("test",new Product("",edt_productName.getText().toString(),Integer.parseInt(edt_productPrice.getText().toString()),edt_productStatus.getText().toString(),edt_productContent.getText().toString()));
 
-                product.setValue(productMap);
+                //product.setValue(productMap);
             }
         });
     }
