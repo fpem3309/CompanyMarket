@@ -37,7 +37,7 @@ public class NewProductActivity extends AppCompatActivity {
 
                 DatabaseReference databaseReference = database.getReference(); // 파이어베이스 테이블 연결
 
-                databaseReference.child("Product").push().setValue(new Product("aaaa","aaa",2,"aa","aaa"));
+                databaseReference.child("Product").push().setValue(new Product("gs://companymarket-122c7.appspot.com/사진.png",edt_productName.getText().toString(),Integer.parseInt(edt_productPrice.getText().toString()),edt_productStatus.getText().toString(),edt_productContent.getText().toString()));
                 //Map<String,Product> productMap = new HashMap<>();
                 //productMap.put("test",new Product("",edt_productName.getText().toString(),Integer.parseInt(edt_productPrice.getText().toString()),edt_productStatus.getText().toString(),edt_productContent.getText().toString()));
 
