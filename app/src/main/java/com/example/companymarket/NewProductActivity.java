@@ -3,6 +3,7 @@ package com.example.companymarket;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,11 +37,12 @@ public class NewProductActivity extends AppCompatActivity {
         btn_addImage = findViewById(R.id.btn_addImage);
         iv_preview = findViewById(R.id.iv_preview);
 
+        FirebaseStorage storage = FirebaseStorage.getInstance(); //스토리지 인스턴스 만들기
+        StorageReference storageReference = storage.getReference(); //스토리지 참조
+
         btn_addImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseStorage storage = FirebaseStorage.getInstance(); //스토리지 인스턴스 만들기
-                StorageReference storageReference = storage.getReference(); //스토리지 참조
 
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType(MediaStore.Images.Media.CONTENT_TYPE);

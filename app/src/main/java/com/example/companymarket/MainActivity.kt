@@ -13,7 +13,6 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.companymarket.databinding.ActivityMainBinding
-import com.example.companymarket.databinding.NavHeaderMainBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -27,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         var uid = user?.uid
+        var email = user?.email
         Log.d("userdata", uid.toString())// user uid가져오기
 
 
@@ -47,8 +47,10 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
 
         var header =  navView.getHeaderView(0)
-        var tv_userEmail : TextView = header.findViewById(R.id.tv_userEmail)
-        tv_userEmail.text = uid.toString()
+        var header_userUid : TextView = header.findViewById(R.id.header_userUid)
+        var header_userEmail : TextView = header.findViewById(R.id.header_userEmail)
+        header_userUid.text = uid.toString()
+        header_userEmail.text = email
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
