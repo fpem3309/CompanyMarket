@@ -15,7 +15,27 @@ class ChatAdapter: RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
         Log.d("array_data", arrayList.toString())
     }
     fun addData(){
-        arrayList.add(Chat("test","test2","test3"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+        arrayList.add(Chat("test","test2","test"))
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {

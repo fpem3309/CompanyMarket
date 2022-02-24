@@ -25,7 +25,7 @@
             <ImageView
                 android:id="@+id/product_Image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:src="@mipmap/ic_launcher"
                 android:text="product_image" />
 

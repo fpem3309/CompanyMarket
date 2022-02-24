@@ -1,6 +1,8 @@
 package com.example.companymarket;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
@@ -25,6 +27,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class ContentActivity extends AppCompatActivity {
+
+    private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 10;
+
     TextView tv_getProductName, tv_getProductPrice, tv_getProductStatus, tv_getProductContent;
     ImageView iv_getProductImage;
     Button btn_chat;
@@ -36,6 +41,26 @@ public class ContentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
+
+        // SecurityException:Permission Denial: reading com.android.providers.media.MediaProvider uri content: 에러 발생시
+        // API 23이상부터 권한을 기기에서 직접 허락
+        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (shouldShowRequestPermissionRationale(
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                // Explain to the user why we need to read the contacts
+            }
+
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+
+            // MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE is an
+            // app-defined int constant that should be quite unique
+
+            return;
+        }
 
         iv_getProductImage = findViewById(R.id.getProductImage);
         tv_getProductName = findViewById(R.id.getProductName);
@@ -56,7 +81,6 @@ public class ContentActivity extends AppCompatActivity {
 
         Log.d("image_data",getProductImage);
         Glide.with(this).load(getProductImage).into(iv_getProductImage);
-
         tv_getProductName.setText(getProductName);
         tv_getProductPrice.setText(getProductPrice);
         tv_getProductStatus.setText(getProductStatus);
