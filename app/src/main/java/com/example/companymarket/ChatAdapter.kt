@@ -14,29 +14,12 @@ class ChatAdapter: RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
         this.arrayList = chatDataset
         Log.d("array_data", arrayList.toString())
     }
-    fun addData(){
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
-        arrayList.add(Chat("test","test2","test"))
 
-    }
+//    fun addData(){
+//        arrayList.add(Chat("test","test2","test"))
+//        arrayList.add(Chat("test","test2","test"))
+//        arrayList.add(Chat("test","test2","test"))
+//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         val binding = ChatItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -45,7 +28,7 @@ class ChatAdapter: RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
 
     inner class ChatViewHolder(private val chatBinding: ChatItemBinding): RecyclerView.ViewHolder(chatBinding.root){
         fun bind(chat: Chat) {
-            chatBinding.chatUserName.text = "name : ${chat.chat_userMame}"
+            chatBinding.chatUserName.text = "name : ${chat.chat_userName}"
             chatBinding.chatUserMessage.text = "message : ${chat.chat_userMessage}"
             chatBinding.chatUserTime.text = "time : ${chat.chat_userTime}"
         }

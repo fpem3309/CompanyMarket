@@ -1,18 +1,20 @@
 package com.example.companymarket;
 
 public class Chat {
-    private String chat_userMame;
+    private String chat_userName;
     private String chat_userMessage;
     private String chat_userTime;
 
+    public Chat(){
 
-    public String getChat_userMame() {
-        return chat_userMame;
     }
 
-    public void setChat_userMame(String chat_userMame) {
-        this.chat_userMame = chat_userMame;
+    public Chat(String chat_userName, String chat_userMessage, String chat_userTime) {
+        this.chat_userName = chat_userName;
+        this.chat_userMessage = chat_userMessage;
+        this.chat_userTime = chat_userTime;
     }
+
 
     public String getChat_userMessage() {
         return chat_userMessage;
@@ -30,18 +32,11 @@ public class Chat {
         this.chat_userTime = chat_userTime;
     }
 
-    @Override
-    public String toString() {
-        return "Chat{" +
-                "chat_userMame='" + chat_userMame + '\'' +
-                ", chat_userMessage='" + chat_userMessage + '\'' +
-                ", chat_userTime='" + chat_userTime + '\'' +
-                '}';
+    public String getChat_userName() {
+        return chat_userName;
     }
 
-    public Chat(String chat_userMame, String chat_userMessage, String chat_userTime) {
-        this.chat_userMame = chat_userMame;
-        this.chat_userMessage = chat_userMessage;
-        this.chat_userTime = chat_userTime;
+    public void setChat_userName(String chat_userName) {
+        this.chat_userName = chat_userName;
     }
 }

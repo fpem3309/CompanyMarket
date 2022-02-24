@@ -85,7 +85,3 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder> () {
     }
 
 }
-
-private fun ImageView.setImageResource(s: String) {
-
-}
