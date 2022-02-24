@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,7 +33,8 @@ import java.util.Map;
 
 public class NewProductActivity extends AppCompatActivity {
     EditText edt_productName, edt_productPrice, edt_productStatus, edt_productContent;
-    Button btn_addProduct, btn_addImage;
+    Button btn_addProduct;
+    ImageButton btn_addImage;
     ImageView iv_preview;
     final int RALLERY_CODE = 10;
     FirebaseStorage storage;

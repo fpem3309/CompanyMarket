@@ -5,6 +5,7 @@ public class Chat {
     private String chat_userMessage;
     private String chat_userTime;
 
+
     public String getChat_userMame() {
         return chat_userMame;
     }
