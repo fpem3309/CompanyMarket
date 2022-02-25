@@ -11,9 +11,8 @@ import java.util.ArrayList
 import android.app.Activity
 
 import android.content.Intent
-
-
-
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class ChatActivity : AppCompatActivity(){
 
@@ -23,6 +22,8 @@ class ChatActivity : AppCompatActivity(){
     private var databaseReference: DatabaseReference? = null
     private var arrayList: ArrayList<Chat>? = null
     private val chatAdapter =  ChatAdapter()
+
+    private val user = Firebase.auth.currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,11 +68,11 @@ class ChatActivity : AppCompatActivity(){
                 // 그 chat값을 arrayList에 추가
                 arrayList!!.add(chat!!)
                 chatAdapter.getChatAdapter(arrayList!!)
-                // recyclerview 갱신
-                chatAdapter.notifyDataSetChanged()
-
                 Log.d("chat_data", chat.toString())
 
+                // recyclerview 갱신
+                chatAdapter.notifyDataSetChanged()
+                //메세지 보낼 시 화면을 맨 밑으로 내림
                 chatBinding!!.recyclerView.scrollToPosition(arrayList!!.size-1)
             }
 
@@ -91,13 +92,13 @@ class ChatActivity : AppCompatActivity(){
 
 
         chatBinding!!.imageButton.setOnClickListener{
-
+            var uid = user?.uid
             var edtChat = chatBinding!!.edtChat.text
             var time : Long = System.currentTimeMillis() // ms로 반환
             var timeformat = SimpleDateFormat("HH:mm")
             var timeChat = timeformat.format(time)
 
-            val Chating = Chat("friend","$edtChat","$timeChat")
+            val Chating = Chat("$uid","$edtChat","$timeChat")
             Log.d("sendclick", Chating.toString())
             databaseReference!!.push().setValue(Chating)
             chatBinding!!.edtChat.setText("")

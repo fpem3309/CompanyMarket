@@ -15,21 +15,12 @@ public class Chat {
         this.chat_userTime = chat_userTime;
     }
 
-
     public String getChat_userMessage() {
         return chat_userMessage;
     }
 
     public void setChat_userMessage(String chat_userMessage) {
         this.chat_userMessage = chat_userMessage;
-    }
-
-    public String getChat_userTime() {
-        return chat_userTime;
-    }
-
-    public void setChat_userTime(String chat_userTime) {
-        this.chat_userTime = chat_userTime;
     }
 
     public String getChat_userName() {
@@ -39,4 +30,14 @@ public class Chat {
     public void setChat_userName(String chat_userName) {
         this.chat_userName = chat_userName;
     }
+
+
+    public String getChat_userTime() {
+        return chat_userTime;
+    }
+
+    public void setChat_userTime(String chat_userTime) {
+        this.chat_userTime = chat_userTime;
+    }
 }
+
