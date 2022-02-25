@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2777777777777778" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.2630769230769231" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.2630769230769231" />
+        <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/drawable/side_nav_bar.xml" value="0.2777777777777778" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/layout/activity_chat.xml" value="0.22" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/layout/activity_content.xml" value="0.22" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/layout/activity_login.xml" value="0.23856613102595797" />
@@ -14,7 +16,9 @@
         <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/layout/chat_item.xml" value="0.25" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/layout/content_main.xml" value="0.2" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/layout/fragment_home.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/layout/fragment_mainproduct.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/layout/fragment_slideshow.xml" value="0.1925925925925926" />
+        <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/layout/main_list.xml" value="0.22" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/layout/nav_header_main.xml" value="0.1925925925925926" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/layout/popular_list.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/SMART/AndroidStudioProjects/CompanyMarket/app/src/main/res/menu/activity_main_drawer.xml" value="0.2046875" />
