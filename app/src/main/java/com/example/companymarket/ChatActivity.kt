@@ -8,6 +8,12 @@ import com.example.companymarket.databinding.ActivityChatBinding
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.ArrayList
+import android.app.Activity
+
+import android.content.Intent
+
+
+
 
 class ChatActivity : AppCompatActivity(){
 
@@ -24,11 +30,6 @@ class ChatActivity : AppCompatActivity(){
         setContentView(chatBinding!!.root)
         chatBinding!!.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
 
-        var edtChat = chatBinding!!.edtChat.text
-
-        var time : Long = System.currentTimeMillis() // ms로 반환
-        var timeformat = SimpleDateFormat("HH:mm")
-        var timeChat = timeformat.format(time)
 
         //chatBinding.recyclerView.adapter = chatAdapter // setAdapter
         //chatAdapter.addData()
@@ -37,35 +38,75 @@ class ChatActivity : AppCompatActivity(){
         database = FirebaseDatabase.getInstance() // 파이어 데이터베이스 연동
         databaseReference = database!!.getReference("Other") // 파이어베이스 Other 테이블 연결
 
-        databaseReference!!.addListenerForSingleValueEvent(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                arrayList!!.clear() // 배열리스트 초기화
-                for(snapshot1 in snapshot.children){
-                    val other = snapshot1.getValue(Chat::class.java)
-                    arrayList!!.add(other!!)
-                    Log.d("chat_data", arrayList.toString())
 
-                    chatAdapter.getChatAdapter(arrayList!!)
-                    chatBinding!!.recyclerView.adapter = chatAdapter //set
-                }
+//        databaseReference!!.addListenerForSingleValueEvent(object : ValueEventListener{
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                arrayList!!.clear() // 배열리스트 초기화
+//                for(snapshot1 in snapshot.children){
+//                    val other = snapshot1.getValue(Chat::class.java)
+//                    arrayList!!.add(other!!)
+//                    Log.d("chat_data", arrayList.toString())
+//
+//                    chatAdapter.getChatAdapter(arrayList!!)
+//                    chatBinding!!.recyclerView.adapter = chatAdapter //set
+//                }
+//            }
+//            override fun onCancelled(error: DatabaseError) {
+//                Log.d("chat_error", error.toException().toString())
+//            }
+//        })
 
+        chatBinding!!.recyclerView.adapter = chatAdapter //set
+
+        databaseReference!!.addChildEventListener(object : ChildEventListener{
+            //새로 추가된 것만 줌
+            //ValueListener는 하나의 값만 바뀌어도 처음부터 다시 값을 줌
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                //새로 추가된 데이터(값 Chat 객체) 가져오기
+                val chat: Chat? = snapshot.getValue(Chat::class.java)
+                // 그 chat값을 arrayList에 추가
+                arrayList!!.add(chat!!)
+                chatAdapter.getChatAdapter(arrayList!!)
+                // recyclerview 갱신
+                chatAdapter.notifyDataSetChanged()
+
+                Log.d("chat_data", chat.toString())
+
+                chatBinding!!.recyclerView.scrollToPosition(arrayList!!.size-1)
             }
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+            }
+
             override fun onCancelled(error: DatabaseError) {
                 Log.d("chat_error", error.toException().toString())
             }
         })
 
+
         chatBinding!!.imageButton.setOnClickListener{
-            val chating = Chat("1","$edtChat","$timeChat")
-            Log.d("sendclick", chating.toString())
-            databaseReference!!.push().setValue(Chat("friend","$edtChat","$timeChat"))
 
+            var edtChat = chatBinding!!.edtChat.text
+            var time : Long = System.currentTimeMillis() // ms로 반환
+            var timeformat = SimpleDateFormat("HH:mm")
+            var timeChat = timeformat.format(time)
+
+            val Chating = Chat("friend","$edtChat","$timeChat")
+            Log.d("sendclick", Chating.toString())
+            databaseReference!!.push().setValue(Chating)
+            chatBinding!!.edtChat.setText("")
         }
-
     }
 
     override fun onDestroy() {
         super.onDestroy()
         chatBinding = null
     }
+
 }

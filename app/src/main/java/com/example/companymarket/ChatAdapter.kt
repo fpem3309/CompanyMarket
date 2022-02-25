@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.companymarket.databinding.ChatItemBinding
 
+
+
 class ChatAdapter: RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
 
     private var arrayList: ArrayList<Chat> = arrayListOf()
