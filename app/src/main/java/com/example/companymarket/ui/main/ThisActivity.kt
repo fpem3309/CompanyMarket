@@ -35,6 +35,7 @@ class ThisActivity : Fragment() {
                         }
                         R.id.second -> {
                             Toast.makeText(context, "second", Toast.LENGTH_SHORT).show()
+                            replaceFragment(ChatroomFragment())
                         }
                         R.id.third -> {
                             Toast.makeText(context, "third", Toast.LENGTH_SHORT).show()
