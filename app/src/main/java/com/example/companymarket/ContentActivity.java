@@ -101,7 +101,7 @@ public class ContentActivity extends AppCompatActivity {
                 for(DataSnapshot snapshot1 : snapshot.getChildren()){
                     User user = snapshot1.getValue(User.class);
                     arrayList.add(user);
-                    Log.d("user", String.valueOf(arrayList));
+                    Log.d("user_data___", String.valueOf(arrayList));
                     System.out.println( arrayList.get(0).getId());
 
                 }

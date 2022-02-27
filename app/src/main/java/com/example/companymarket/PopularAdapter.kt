@@ -48,6 +48,7 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder> () {
         fun bind(data: Product){
             //binding.productImage.setImageResource("${data.pro_Image}")
             Glide.with(itemView).load("${data.pro_Image}").into(binding.productImage)
+            binding.productUid.text = "Uid: ${data.pro_uid}"
             binding.productName.text = "Name: ${data.pro_name}"
             binding.productPrice.text = "Price: ${data.pro_price}"
             binding.productStatus.text = "Status: ${data.pro_status}"
@@ -56,6 +57,7 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder> () {
             itemView.setOnClickListener {
                 Intent(itemView.context, ContentActivity::class.java).apply {
                     putExtra("product_Image",data.pro_Image)
+                    putExtra("product_Uid",data.pro_uid)
                     putExtra("product_name",data.pro_name)
                     putExtra("product_price",data.pro_price.toString())
                     putExtra("product_status",data.pro_status.toString())

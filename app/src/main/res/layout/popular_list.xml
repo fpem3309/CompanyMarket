@@ -30,6 +30,12 @@
                 android:text="product_image" />
 
             <TextView
+                android:id="@+id/product_uid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="product_name" />
+
+            <TextView
                 android:id="@+id/product_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
