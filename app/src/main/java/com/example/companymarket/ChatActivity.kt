@@ -36,9 +36,11 @@ class ChatActivity : AppCompatActivity(){
         //chatBinding.recyclerView.adapter = chatAdapter // setAdapter
         //chatAdapter.addData()
 
+        var chatUid = intent.getStringExtra("Chat_Uid")
+
         arrayList = ArrayList()
         database = FirebaseDatabase.getInstance() // 파이어 데이터베이스 연동
-        databaseReference = database!!.getReference("Chatroom").child(uid!!) // 파이어베이스 Other 테이블 연결
+        databaseReference = database!!.getReference("Chatroom").child(chatUid!!) // 파이어베이스 Chatroom 테이블의 chatUid와 값이 같은 것 연결
 
 
 //        databaseReference!!.addListenerForSingleValueEvent(object : ValueEventListener{

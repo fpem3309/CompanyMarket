@@ -73,6 +73,7 @@ public class ContentActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
         String getProductImage = bundle.getString("product_Image");
+        String getProductUid = bundle.getString("product_Uid");
         String getProductName = bundle.getString("product_name");
         String getProductPrice = bundle.getString("product_price");
         String getProductStatus = bundle.getString("product_status");
@@ -116,6 +117,7 @@ public class ContentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent1 = new Intent(ContentActivity.this, ChatActivity.class);
+                intent1.putExtra("Chat_Uid",getProductUid);
                 startActivity(intent1);
             }
         });
