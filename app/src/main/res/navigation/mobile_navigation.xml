@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_main"
-        android:name="com.example.companymarket.ui.main.ThisActivity"
+        android:name="com.example.companymarket.ui.main.MainframeFragment"
         android:label="@string/menu_main"
-        tools:layout="@layout/activity_this"/>
+        tools:layout="@layout/fragment_mainframe"/>
 
     <fragment
         android:id="@+id/nav_home"

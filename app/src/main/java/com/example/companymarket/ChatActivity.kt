@@ -20,6 +20,7 @@ class ChatActivity : AppCompatActivity(){
 
     private var database: FirebaseDatabase? = null
     private var databaseReference: DatabaseReference? = null
+
     private var arrayList: ArrayList<Chat>? = null
     private val chatAdapter =  ChatAdapter()
 
@@ -31,13 +32,13 @@ class ChatActivity : AppCompatActivity(){
         setContentView(chatBinding!!.root)
         chatBinding!!.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
 
-
+        var uid = user?.uid
         //chatBinding.recyclerView.adapter = chatAdapter // setAdapter
         //chatAdapter.addData()
 
         arrayList = ArrayList()
         database = FirebaseDatabase.getInstance() // 파이어 데이터베이스 연동
-        databaseReference = database!!.getReference("Other") // 파이어베이스 Other 테이블 연결
+        databaseReference = database!!.getReference("Chatroom").child(uid!!) // 파이어베이스 Other 테이블 연결
 
 
 //        databaseReference!!.addListenerForSingleValueEvent(object : ValueEventListener{

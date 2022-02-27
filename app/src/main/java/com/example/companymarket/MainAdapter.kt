@@ -41,6 +41,7 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder> () {
         fun bind(data: Product){
             //binding.productImage.setImageResource("${data.pro_Image}")
             Glide.with(itemView).load("${data.pro_Image}").into(binding.productImage)
+            binding.productUid.text = "Uid: ${data.pro_uid}"
             binding.productName.text = "Name: ${data.pro_name}"
             binding.productPrice.text = "Price: ${data.pro_price}"
             binding.productStatus.text = "Status: ${data.pro_status}"

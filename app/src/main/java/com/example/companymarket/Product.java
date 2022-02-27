@@ -3,6 +3,7 @@ package com.example.companymarket;
 import android.net.Uri;
 
 public class Product {
+    private String Pro_uid;
     private String Pro_Image;
     private String Pro_name;
     private int Pro_price;
@@ -14,7 +15,8 @@ public class Product {
 
     }
 
-    public Product(Uri Pro_Image, String Pro_name, int Pro_price, String Pro_status, String Pro_content) {
+    public Product(String Pro_uid, Uri Pro_Image, String Pro_name, int Pro_price, String Pro_status, String Pro_content) {
+        this.Pro_uid = Pro_uid;
         this.Pro_Image = Pro_Image.toString();
         this.Pro_name = Pro_name;
         this.Pro_price = Pro_price;
@@ -22,6 +24,13 @@ public class Product {
         this.Pro_content = Pro_content;
     }
 
+    public String getPro_uid() {
+        return Pro_uid;
+    }
+
+    public void setPro_uid(String pro_uid) {
+        Pro_uid = pro_uid;
+    }
 
     public String getPro_Image() {
         return Pro_Image;
@@ -66,7 +75,8 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "Pro_Image='" + Pro_Image + '\'' +
+                "Pro_uid='" + Pro_uid + '\'' +
+                ", Pro_Image='" + Pro_Image + '\'' +
                 ", Pro_name='" + Pro_name + '\'' +
                 ", Pro_price=" + Pro_price +
                 ", Pro_status='" + Pro_status + '\'' +
