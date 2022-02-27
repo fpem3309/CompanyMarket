@@ -32,16 +32,18 @@ class ChatActivity : AppCompatActivity(){
         setContentView(chatBinding!!.root)
         chatBinding!!.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
 
-        var uid = user?.uid
         //chatBinding.recyclerView.adapter = chatAdapter // setAdapter
         //chatAdapter.addData()
 
-        var chatUid = intent.getStringExtra("Chat_Uid")
+        var chatUid = intent.getStringExtra("Chat_Uid")// 대화 상대 Uid
+        var chatProductName = intent.getStringExtra("Chat_ProductName")// 대화 Product
+
+        chatBinding!!.yourUid.text = chatUid
 
         arrayList = ArrayList()
         database = FirebaseDatabase.getInstance() // 파이어 데이터베이스 연동
-        databaseReference = database!!.getReference("Chatroom").child(chatUid!!) // 파이어베이스 Chatroom 테이블의 chatUid와 값이 같은 것 연결
-
+        databaseReference = database!!.getReference("Chatroom").child(chatUid!!).child(chatProductName!!) // 파이어베이스 Chatroom 테이블의 chatUid와 값이 같은 것 연결
+        Log.d("chatUid_data",chatUid)
 
 //        databaseReference!!.addListenerForSingleValueEvent(object : ValueEventListener{
 //            override fun onDataChange(snapshot: DataSnapshot) {
@@ -62,36 +64,40 @@ class ChatActivity : AppCompatActivity(){
 
         chatBinding!!.recyclerView.adapter = chatAdapter //set
 
-        databaseReference!!.addChildEventListener(object : ChildEventListener{
-            //새로 추가된 것만 줌
-            //ValueListener는 하나의 값만 바뀌어도 처음부터 다시 값을 줌
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                //새로 추가된 데이터(값 Chat 객체) 가져오기
-                val chat: Chat? = snapshot.getValue(Chat::class.java)
-                // 그 chat값을 arrayList에 추가
-                arrayList!!.add(chat!!)
-                chatAdapter.getChatAdapter(arrayList!!)
-                Log.d("chat_data", chat.toString())
+        if(chatProductName.equals("uidtest")) { // uidtest 대신 넣을 무언가
+            databaseReference!!.addChildEventListener(object : ChildEventListener {
+                //새로 추가된 것만 줌
+                //ValueListener는 하나의 값만 바뀌어도 처음부터 다시 값을 줌
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    //새로 추가된 데이터(값 Chat 객체) 가져오기
+                    val chat: Chat? = snapshot.getValue(Chat::class.java)
 
-                // recyclerview 갱신
-                chatAdapter.notifyDataSetChanged()
-                //메세지 보낼 시 화면을 맨 밑으로 내림
-                chatBinding!!.recyclerView.scrollToPosition(arrayList!!.size-1)
-            }
+                    // 그 chat값을 arrayList에 추가
+                    arrayList!!.add(chat!!)
+                    chatAdapter.getChatAdapter(arrayList!!)
 
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-            }
+                    Log.d("chat_data", chat.toString())
 
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-            }
+                    // recyclerview 갱신
+                    chatAdapter.notifyDataSetChanged()
+                    //메세지 보낼 시 화면을 맨 밑으로 내림
+                    chatBinding!!.recyclerView.scrollToPosition(arrayList!!.size - 1)
+                }
 
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-            }
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.d("chat_error", error.toException().toString())
-            }
-        })
+                override fun onChildRemoved(snapshot: DataSnapshot) {
+                }
+
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.d("chat_error", error.toException().toString())
+                }
+            })
+        }
 
 
         chatBinding!!.imageButton.setOnClickListener{
@@ -101,8 +107,9 @@ class ChatActivity : AppCompatActivity(){
             var timeformat = SimpleDateFormat("HH:mm")
             var timeChat = timeformat.format(time)
 
+
             val Chating = Chat("$uid","$edtChat","$timeChat")
-            Log.d("sendclick", Chating.toString())
+            Log.d("sendclick_data", Chating.toString())
             databaseReference!!.push().setValue(Chating)
             chatBinding!!.edtChat.setText("")
         }

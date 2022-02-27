@@ -47,6 +47,7 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder> () {
             binding.productStatus.text = "Status: ${data.pro_status}"
             binding.productContent.text = "Content: ${data.pro_content}"
 
+
             itemView.setOnClickListener {
                 Intent(itemView.context, ContentActivity::class.java).apply {
                     putExtra("product_Image",data.pro_Image)

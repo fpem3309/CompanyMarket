@@ -118,10 +118,10 @@ public class ContentActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent1 = new Intent(ContentActivity.this, ChatActivity.class);
                 intent1.putExtra("Chat_Uid",getProductUid);
+                intent1.putExtra("Chat_ProductName",getProductName);
                 startActivity(intent1);
             }
         });
     }
-
 
 }
