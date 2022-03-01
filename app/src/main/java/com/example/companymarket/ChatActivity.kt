@@ -36,7 +36,7 @@ class ChatActivity : AppCompatActivity(){
         //chatAdapter.addData()
 
         var chatUid = intent.getStringExtra("Chat_Uid")// 대화 상대 Uid
-        var chatProductName = intent.getStringExtra("Chat_ProductName")// 대화 Product
+        var chatProductName = intent.getStringExtra("Chat_ProductName")// 대화 상대 Product
 
         chatBinding!!.yourUid.text = chatUid
 
@@ -44,6 +44,13 @@ class ChatActivity : AppCompatActivity(){
         database = FirebaseDatabase.getInstance() // 파이어 데이터베이스 연동
         databaseReference = database!!.getReference("Chatroom").child(chatUid!!).child(chatProductName!!) // 파이어베이스 Chatroom 테이블의 chatUid와 값이 같은 것 연결
         Log.d("chatUid_data",chatUid)
+        Log.d("chatProduct_data",chatProductName)
+
+        var Firebase_ProductName_Route = databaseReference.toString() // Firebase Chatroom/chatUid/chatProductName 경로 가져오기
+        Log.d("Firebase_data", Firebase_ProductName_Route) // Firebase Chatroom/chatUid/chatProductName
+
+        var Firebase_ProductName = Firebase_ProductName_Route.substring(Firebase_ProductName_Route.lastIndexOf("/")+1)
+        Log.d("chat3_data", Firebase_ProductName) // Firebase_ProductName만 subString으로 가져오기
 
 //        databaseReference!!.addListenerForSingleValueEvent(object : ValueEventListener{
 //            override fun onDataChange(snapshot: DataSnapshot) {
@@ -62,9 +69,9 @@ class ChatActivity : AppCompatActivity(){
 //            }
 //        })
 
-        chatBinding!!.recyclerView.adapter = chatAdapter //set
+        chatBinding!!.recyclerView.adapter = chatAdapter //setAdapter
 
-        if(chatProductName.equals("uidtest")) { // uidtest 대신 넣을 무언가
+        if(chatProductName.equals(Firebase_ProductName)) { // Intent로 넘어온 chatProductName과 Firebase_ProductName에 있는 데이터가 같을때 채팅 가져오기
             databaseReference!!.addChildEventListener(object : ChildEventListener {
                 //새로 추가된 것만 줌
                 //ValueListener는 하나의 값만 바뀌어도 처음부터 다시 값을 줌
