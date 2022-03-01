@@ -3,14 +3,11 @@ package com.example.companymarket
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.companymarket.databinding.ChatItemBinding
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 

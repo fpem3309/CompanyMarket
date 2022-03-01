@@ -39,5 +39,14 @@ public class Chat {
     public void setChat_userTime(String chat_userTime) {
         this.chat_userTime = chat_userTime;
     }
+
+    @Override
+    public String toString() {
+        return "Chat{" +
+                "chat_userName='" + chat_userName + '\'' +
+                ", chat_userMessage='" + chat_userMessage + '\'' +
+                ", chat_userTime='" + chat_userTime + '\'' +
+                '}';
+    }
 }
 
