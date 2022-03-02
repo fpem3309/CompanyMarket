@@ -5,6 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.companymarket.databinding.ChatroomListBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class ChatroomAdapter : RecyclerView.Adapter<ChatroomAdapter.ViewHolder> (){
 
@@ -13,9 +17,6 @@ class ChatroomAdapter : RecyclerView.Adapter<ChatroomAdapter.ViewHolder> (){
     fun getchatroomAdapter(chatroomDataset : ArrayList<Product>) {
         this.arrayList = chatroomDataset
         Log.d("array_data", arrayList.toString())
-
-        var i : Product = arrayList.get(0)
-        Log.d("array_data2", i.toString())
     }
 
 
@@ -33,10 +34,35 @@ class ChatroomAdapter : RecyclerView.Adapter<ChatroomAdapter.ViewHolder> (){
         return arrayList.size
     }
     class ViewHolder(private val binding: ChatroomListBinding) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(data: Product) {
             //Glide.with(itemView).load("${data.pro_Image}").into(binding.productImage)
-            binding.chatroomUserName.text = "Uid: ${data.pro_name}"
+            binding.chatroomUserName.text = "Uid: ${data.pro_uid}"
+            binding.chatroomRecentMessage.text = "Uid: ${data.pro_name}"
+            var database = FirebaseDatabase.getInstance().getReference("Chatroom").child(binding.chatroomUserName.text as String).child(
+                binding.chatroomRecentMessage.text as String)
+            Log.d("database_data", database.toString())
+
+            database.addListenerForSingleValueEvent(object : ValueEventListener{
+                var arrayList2: ArrayList<Chat>? = arrayListOf()
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    for (data in snapshot.children) {
+                        val chat = data.getValue(
+                            Chat::class.java
+                        )
+                        arrayList2!!.add(chat!!)
+                        Log.d("dddata", arrayList2!!.get(0).chat_userName)
+                        binding.chatroomRecentTime.text = arrayList2.toString()
+                }
+            }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
         }
+
     }
 
 }
