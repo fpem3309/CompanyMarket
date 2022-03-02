@@ -8,12 +8,17 @@ import com.example.companymarket.databinding.ChatroomListBinding
 
 class ChatroomAdapter : RecyclerView.Adapter<ChatroomAdapter.ViewHolder> (){
 
-    private var arrayList: ArrayList<Chat> = arrayListOf()
+    private var arrayList: ArrayList<Product> = arrayListOf()
 
-    fun getchatroomAdapter(chatroomDataset : ArrayList<Chat>) {
+    fun getchatroomAdapter(chatroomDataset : ArrayList<Product>) {
         this.arrayList = chatroomDataset
         Log.d("array_data", arrayList.toString())
+
+        var i : Product = arrayList.get(0)
+        Log.d("array_data2", i.toString())
     }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ChatroomListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -28,11 +33,9 @@ class ChatroomAdapter : RecyclerView.Adapter<ChatroomAdapter.ViewHolder> (){
         return arrayList.size
     }
     class ViewHolder(private val binding: ChatroomListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Chat) {
+        fun bind(data: Product) {
             //Glide.with(itemView).load("${data.pro_Image}").into(binding.productImage)
-            binding.chatroomUserName.text = "Uid: ${data.chat_userName}"
-            binding.chatroomRecentMessage.text = "${data.chat_userMessage}"
-            binding.chatroomRecentTime.text = "${data.chat_userTime}"
+            binding.chatroomUserName.text = "Uid: ${data.pro_name}"
         }
     }
 

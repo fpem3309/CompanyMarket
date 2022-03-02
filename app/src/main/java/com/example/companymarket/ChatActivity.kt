@@ -46,28 +46,20 @@ class ChatActivity : AppCompatActivity(){
         Log.d("chatUid_data",chatUid)
         Log.d("chatProduct_data",chatProductName)
 
+//        var uid = user?.uid
+//        databaseReference = database!!.getReference("Chatroom").child(chatUid!!+"|"+uid!!+"|"+chatProductName!!) // 파이어베이스 Chatroom 테이블의 chatUid와 값이 같은 것 연결
+//        Log.d("chatUid_data",chatUid)
+//        Log.d("chatProduct_data",chatProductName)
+
+
         var Firebase_ProductName_Route = databaseReference.toString() // Firebase Chatroom/chatUid/chatProductName 경로 가져오기
         Log.d("Firebase_data", Firebase_ProductName_Route) // Firebase Chatroom/chatUid/chatProductName
 
         var Firebase_ProductName = Firebase_ProductName_Route.substring(Firebase_ProductName_Route.lastIndexOf("/")+1)
         Log.d("chat3_data", Firebase_ProductName) // Firebase_ProductName만 subString으로 가져오기
 
-//        databaseReference!!.addListenerForSingleValueEvent(object : ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                arrayList!!.clear() // 배열리스트 초기화
-//                for(snapshot1 in snapshot.children){
-//                    val other = snapshot1.getValue(Chat::class.java)
-//                    arrayList!!.add(other!!)
-//                    Log.d("chat_data", arrayList.toString())
-//
-//                    chatAdapter.getChatAdapter(arrayList!!)
-//                    chatBinding!!.recyclerView.adapter = chatAdapter //set
-//                }
-//            }
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.d("chat_error", error.toException().toString())
-//            }
-//        })
+//        var Firebase_ProductName = Firebase_ProductName_Route.substring(Firebase_ProductName_Route.lastIndexOf("%7C")+3)
+//        Log.d("chat3_data", Firebase_ProductName) // 상품이름
 
         chatBinding!!.recyclerView.adapter = chatAdapter //setAdapter
 
