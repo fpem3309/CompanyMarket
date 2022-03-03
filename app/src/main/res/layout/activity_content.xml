@@ -17,14 +17,17 @@
         android:id="@+id/getProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="test"
+        android:text="ProductName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getProductImage" />
+        app:layout_constraintTop_toBottomOf="@+id/getProductImage"
+        android:textSize="30sp"/>
+
 
     <TextView
-        android:text="test"
-        android:id="@+id/getProductPrice"
+        android:layout_marginTop="10dp"
+        android:text="ProductStatus"
+        android:id="@+id/getProductStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,30 +35,36 @@
         app:layout_constraintTop_toBottomOf="@+id/getProductName" />
 
     <TextView
-        android:text="test"
-        android:id="@+id/getProductStatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getProductPrice" />
-
-    <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/getProductContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="test"
+        android:text="ProductContent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getProductStatus" />
+        app:layout_constraintTop_toBottomOf="@+id/getProductStatus"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/getProductPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="ProductPrice"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_chat" />
 
     <Button
         android:id="@+id/btn_chat"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="채팅하기"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getProductContent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/getProductPrice" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

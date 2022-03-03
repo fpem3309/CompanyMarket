@@ -42,10 +42,10 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder> () {
             //binding.productImage.setImageResource("${data.pro_Image}")
             Glide.with(itemView).load("${data.pro_Image}").into(binding.productImage)
             binding.productUid.text = "Uid: ${data.pro_uid}"
-            binding.productName.text = "Name: ${data.pro_name}"
-            binding.productPrice.text = "Price: ${data.pro_price}"
-            binding.productStatus.text = "Status: ${data.pro_status}"
-            binding.productContent.text = "Content: ${data.pro_content}"
+            binding.productName.text = "${data.pro_name}"
+            binding.productPrice.text = "${data.pro_price}원"
+            binding.productStatus.text = "${data.pro_status}"
+            binding.productContent.text = "${data.pro_content}"
 
 
             itemView.setOnClickListener {

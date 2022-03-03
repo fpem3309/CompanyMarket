@@ -13,10 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CompanyMarket">
+
         <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:label="@string/title_activity_login"
+            android:theme="@style/Theme.CompanyMarket.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
             android:theme="@style/Theme.CompanyMarket.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,18 +32,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.CompanyMarket.NoActionBar">
-        </activity>
-        <activity android:name=".ContentActivity" />
-        <activity android:name=".NewProductActivity" />
+
+        <activity android:name=".ContentActivity"
+            android:theme="@style/Theme.CompanyMarket.NoActionBar"/>
+
+        <activity android:name=".NewProductActivity"
+            android:theme="@style/Theme.CompanyMarket.NoActionBar"/>
+
         <activity android:name=".ChatActivity"
+            android:theme="@style/Theme.CompanyMarket.NoActionBar"
             android:exported="true">
         </activity>
-        <activity android:name=".ui.main.MainframeFragment"/>
+
 
     </application>
 

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,8 +38,8 @@ public class NewProductActivity extends AppCompatActivity {
     String uid = user.getUid();
 
     EditText edt_productName, edt_productPrice, edt_productStatus, edt_productContent;
-    Button btn_addProduct;
-    ImageButton btn_addImage;
+    TextView btn_addProduct;
+    ImageButton btn_addImage, btn_cancle;
     ImageView iv_preview;
     final int RALLERY_CODE = 10;
     FirebaseStorage storage;
@@ -85,6 +86,7 @@ public class NewProductActivity extends AppCompatActivity {
         edt_productContent = findViewById(R.id.edt_productContent);
         btn_addProduct = findViewById(R.id.btn_addProduct);
         btn_addImage = findViewById(R.id.btn_addImage);
+        btn_cancle = findViewById(R.id.btn_cancle);
         iv_preview = findViewById(R.id.iv_preview);
 
 
@@ -104,6 +106,13 @@ public class NewProductActivity extends AppCompatActivity {
             }
         });
 
+        btn_cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
 
         btn_addProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +121,7 @@ public class NewProductActivity extends AppCompatActivity {
                 databaseReference.child("Product").push().setValue(new Product(uid,file,edt_productName.getText().toString(),Integer.parseInt(edt_productPrice.getText().toString()),edt_productStatus.getText().toString(),edt_productContent.getText().toString()));
                 Log.d("uid_data",uid);
                 Log.d("file_data", String.valueOf(file));
+                finish();
                 //Map<String,Product> productMap = new HashMap<>();
                 //productMap.put("test",new Product("",edt_productName.getText().toString(),Integer.parseInt(edt_productPrice.getText().toString()),edt_productStatus.getText().toString(),edt_productContent.getText().toString()));
 

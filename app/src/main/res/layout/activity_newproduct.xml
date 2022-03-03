@@ -2,60 +2,126 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="상품명"/>
-    <EditText
-        android:id="@+id/edt_productName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/com1"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:textColor="@color/com2"/>
+
+        <TextView
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="글쓰기"
+            android:gravity="center"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/btn_addProduct"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="가격"/>
-    <EditText
-        android:id="@+id/edt_productPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:text="완료"
+        android:backgroundTint="@color/com1"
+        android:textColor="@color/com2"
+        android:gravity="center"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="판매 상태"/>
-    <EditText
-        android:id="@+id/edt_productStatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="상품 설명"/>
-    <EditText
-        android:id="@+id/edt_productContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <ImageView
-        android:id="@+id/iv_preview"
-        android:layout_width="match_parent"
-        android:layout_height="150dp" />
+<LinearLayout
+    android:layout_marginTop="20dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <ImageButton
+        android:layout_marginLeft="10dp"
         android:id="@+id/btn_addImage"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_menu_gallery" />
-    <Button
-        android:id="@+id/btn_addProduct"
+
+    <ImageView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/iv_preview"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"/>
+</LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="상품등록"/>
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textColorHint="#EAEAEA">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_productName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/com1"
+            android:hint="글 제목 (상품명)" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textColorHint="#EAEAEA">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_productPrice"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="상품 가격"
+            android:background="@color/com1"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textColorHint="#EAEAEA">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_productStatus"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="상태"
+            android:background="@color/com1"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textColorHint="#EAEAEA">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_productContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|left"
+            android:hint="게시글 내용을 작성해주세요"
+            android:background="@color/com1"
+            android:inputType="textMultiLine"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

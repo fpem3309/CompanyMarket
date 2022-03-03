@@ -30,6 +30,10 @@ class MainActivity : AppCompatActivity() {
         var email = user?.email
         Log.d("userdata", uid.toString())// user uid가져오기
 
+        //임시 로그인
+        uid = "WV4eQnnuHMVYhIwHNHo8vpm3OLw2"
+        email = "test3@naver.com"
+
 
      binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

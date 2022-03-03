@@ -41,19 +41,23 @@
                 android:id="@+id/product_uid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="product_uid" />
+                android:text="product_uid"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/product_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="product_name" />
+                android:text="product_name"
+                android:textSize="18sp"/>
 
             <TextView
                 android:text="product_price"
                 android:id="@+id/product_price"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:text="product_status"
@@ -65,7 +69,8 @@
                 android:text="product_content"
                 android:id="@+id/product_content"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
 </LinearLayout>
         </LinearLayout>
 
