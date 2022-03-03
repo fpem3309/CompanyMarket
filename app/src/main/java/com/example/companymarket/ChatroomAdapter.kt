@@ -1,5 +1,6 @@
 package com.example.companymarket
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -7,10 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.companymarket.databinding.ChatroomListBinding
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 
 class ChatroomAdapter : RecyclerView.Adapter<ChatroomAdapter.ViewHolder> (){
 
@@ -41,30 +39,36 @@ class ChatroomAdapter : RecyclerView.Adapter<ChatroomAdapter.ViewHolder> (){
 
             //Glide.with(itemView).load("${data.pro_Image}").into(binding.productImage)
             binding.chatroomUserName.text = "Uid: ${data.pro_uid}"
-            binding.chatroomRecentMessage.text = "Uid: ${data.pro_name}"
-            var database = FirebaseDatabase.getInstance().getReference("Chatroom").child(binding.chatroomUserName.text as String).child(
-                binding.chatroomRecentMessage.text as String)
+            binding.chatroomRecentMessage.text = "UserName: ${data.pro_name}"
+
+            var database = FirebaseDatabase.getInstance().getReference("Chatroom").child("${data.pro_uid}").child(
+                "${data.pro_name}")
             Log.d("database_data", database.toString())
 
-            database.addListenerForSingleValueEvent(object : ValueEventListener{
-                var arrayList2: ArrayList<Chat>? = arrayListOf()
-                override fun onDataChange(snapshot: DataSnapshot) {
+                database.addValueEventListener(object : ValueEventListener {
+                    var arrayList2: ArrayList<Chat>? = arrayListOf()
+                    override fun onDataChange(snapshot: DataSnapshot) {
 
-                    for (data in snapshot.children) {
-                        val chat = data.getValue(
-                            Chat::class.java
-                        )
-                        arrayList2!!.add(chat!!)
-                        Log.d("array2_data", arrayList2.toString())
-                        Log.d("chat2_data", chat.toString())
-                        binding.chatroomRecentTime.text = arrayList2.toString()
-                }
-            }
+                        Log.d(TAG, "onDataChange_data:" + snapshot.key)
+                        Log.d(TAG, "onDataChange_data2:" + snapshot.value)
+                        Log.d(TAG, "onDataChange_data3:" + snapshot.children)
 
-                override fun onCancelled(error: DatabaseError) {
+                        for (snapshot1 in snapshot.children) {
+                            val chat = snapshot1.getValue(Chat::class.java)
+                            Log.d(TAG, "onDataChange_data4:" + snapshot1.value)
 
-                }
-            })
+                            arrayList2!!.add(chat!!)
+                            Log.d("array2_data", arrayList2.toString())
+                            Log.d("chat2_data", chat.toString())
+                            binding.chatroomRecentTime.text = "RecentMessage: ${chat.chat_userMessage}"
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                    }
+                })
+
             itemView.setOnClickListener{
                 Intent(itemView.context, ChatActivity::class.java).apply {
                     putExtra("Chat_Uid","${data.pro_uid}")
