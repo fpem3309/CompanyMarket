@@ -1,5 +1,7 @@
 package com.example.companymarket
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -36,6 +38,7 @@ class ChatroomAdapter : RecyclerView.Adapter<ChatroomAdapter.ViewHolder> (){
     class ViewHolder(private val binding: ChatroomListBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: Product) {
+
             //Glide.with(itemView).load("${data.pro_Image}").into(binding.productImage)
             binding.chatroomUserName.text = "Uid: ${data.pro_uid}"
             binding.chatroomRecentMessage.text = "Uid: ${data.pro_name}"
@@ -52,7 +55,8 @@ class ChatroomAdapter : RecyclerView.Adapter<ChatroomAdapter.ViewHolder> (){
                             Chat::class.java
                         )
                         arrayList2!!.add(chat!!)
-                        Log.d("dddata", arrayList2!!.get(0).chat_userName)
+                        Log.d("array2_data", arrayList2.toString())
+                        Log.d("chat2_data", chat.toString())
                         binding.chatroomRecentTime.text = arrayList2.toString()
                 }
             }
@@ -61,7 +65,14 @@ class ChatroomAdapter : RecyclerView.Adapter<ChatroomAdapter.ViewHolder> (){
 
                 }
             })
+            itemView.setOnClickListener{
+                Intent(itemView.context, ChatActivity::class.java).apply {
+                    putExtra("Chat_Uid","${data.pro_uid}")
+                    putExtra("Chat_ProductName","${data.pro_name}")
+                }.run { itemView.context.startActivity(this) }
+            }
         }
+
 
     }
 
