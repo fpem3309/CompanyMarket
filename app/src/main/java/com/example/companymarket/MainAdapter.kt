@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.companymarket.Data.Product
 import com.example.companymarket.databinding.MainListBinding
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder> () {

@@ -1,4 +1,4 @@
-package com.example.companymarket;
+package com.example.companymarket.Data;
 
 import android.net.Uri;
 

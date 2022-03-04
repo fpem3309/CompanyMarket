@@ -1,16 +1,15 @@
-package com.example.companymarket
+package com.example.companymarket.ui.main.chat
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.companymarket.Data.Chat
 import com.example.companymarket.databinding.ActivityChatBinding
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.ArrayList
-import android.app.Activity
 
-import android.content.Intent
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -69,7 +68,8 @@ class ChatActivity : AppCompatActivity(){
                 //ValueListener는 하나의 값만 바뀌어도 처음부터 다시 값을 줌
                 override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                     //새로 추가된 데이터(값 Chat 객체) 가져오기
-                    val chat: Chat? = snapshot.getValue(Chat::class.java)
+                    val chat: Chat? = snapshot.getValue(
+                        Chat::class.java)
 
                     // 그 chat값을 arrayList에 추가
                     arrayList!!.add(chat!!)
@@ -107,7 +107,11 @@ class ChatActivity : AppCompatActivity(){
             var timeChat = timeformat.format(time)
 
 
-            val Chating = Chat("$uid","$edtChat","$timeChat")
+            val Chating = Chat(
+                "$uid",
+                "$edtChat",
+                "$timeChat"
+            )
             Log.d("sendclick_data", Chating.toString())
             databaseReference!!.push().setValue(Chating)
             chatBinding!!.edtChat.setText("")

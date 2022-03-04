@@ -39,7 +39,7 @@
         <activity android:name=".NewProductActivity"
             android:theme="@style/Theme.CompanyMarket.NoActionBar"/>
 
-        <activity android:name=".ChatActivity"
+        <activity android:name=".ui.main.chat.ChatActivity"
             android:theme="@style/Theme.CompanyMarket.NoActionBar"
             android:exported="true">
         </activity>

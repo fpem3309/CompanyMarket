@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.companymarket.MainAdapter
-import com.example.companymarket.Product
+import com.example.companymarket.Data.Product
 import com.example.companymarket.databinding.FragmentMainproductBinding
-import com.google.android.material.navigation.NavigationBarView
 import com.google.firebase.database.*
 import java.util.ArrayList
 

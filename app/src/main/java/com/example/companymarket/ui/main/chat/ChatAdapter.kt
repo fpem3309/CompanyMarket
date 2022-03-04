@@ -1,4 +1,4 @@
-package com.example.companymarket
+package com.example.companymarket.ui.main.chat
 
 import android.util.Log
 import android.view.Gravity
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.example.companymarket.Data.Chat
 import com.example.companymarket.databinding.ChatItemBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -19,13 +20,6 @@ class ChatAdapter: RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
         this.arrayList = chatDataset
         Log.d("array_data", arrayList.toString())
     }
-
-//    fun addData(){
-//        arrayList.add(Chat("test","test2","test"))
-//        arrayList.add(Chat("test","test2","test"))
-//        arrayList.add(Chat("test","test2","test"))
-//    }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         val binding = ChatItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)

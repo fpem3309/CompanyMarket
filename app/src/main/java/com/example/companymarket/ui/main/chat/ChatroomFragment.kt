@@ -1,4 +1,4 @@
-package com.example.companymarket.ui.main
+package com.example.companymarket.ui.main.chat
 
 import android.os.Bundle
 import android.util.Log
@@ -7,9 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.companymarket.Chat
-import com.example.companymarket.ChatroomAdapter
-import com.example.companymarket.Product
+import com.example.companymarket.Data.Chat
+import com.example.companymarket.Data.Product
 import com.example.companymarket.databinding.FragmentChatroomBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*

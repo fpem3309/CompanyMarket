@@ -1,4 +1,4 @@
-package com.example.companymarket;
+package com.example.companymarket.Data;
 
 public class Chat {
     private String chat_userName;

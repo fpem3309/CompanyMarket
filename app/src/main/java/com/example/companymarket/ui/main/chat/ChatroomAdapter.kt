@@ -1,12 +1,13 @@
-package com.example.companymarket
+package com.example.companymarket.ui.main.chat
 
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.companymarket.Data.Chat
+import com.example.companymarket.Data.Product
 import com.example.companymarket.databinding.ChatroomListBinding
 import com.google.firebase.database.*
 

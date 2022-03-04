@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.companymarket.R
 import com.example.companymarket.databinding.FragmentMainframeBinding
+import com.example.companymarket.ui.main.chat.ChatroomFragment
 
 class MainframeFragment : Fragment() {
 

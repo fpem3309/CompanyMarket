@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.companymarket.*
+import com.example.companymarket.Data.Product
 import com.example.companymarket.databinding.FragmentHomeBinding
 import com.google.firebase.database.*
 import java.util.ArrayList
