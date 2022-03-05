@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.companymarket.Data.Chat
 import com.example.companymarket.Data.Product
 import com.example.companymarket.databinding.ChatroomListBinding
@@ -38,7 +39,7 @@ class ChatroomAdapter : RecyclerView.Adapter<ChatroomAdapter.ViewHolder> (){
 
         fun bind(data: Product) {
 
-            //Glide.with(itemView).load("${data.pro_Image}").into(binding.productImage)
+            Glide.with(itemView).load("${data.pro_Image}").into(binding.chatroomUserImg)
             binding.chatroomUserName.text = "Uid: ${data.pro_uid}"
             binding.chatroomRecentMessage.text = "UserName: ${data.pro_name}"
 

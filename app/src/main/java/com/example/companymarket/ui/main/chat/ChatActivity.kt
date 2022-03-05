@@ -45,20 +45,12 @@ class ChatActivity : AppCompatActivity(){
         Log.d("chatUid_data",chatUid)
         Log.d("chatProduct_data",chatProductName)
 
-//        var uid = user?.uid
-//        databaseReference = database!!.getReference("Chatroom").child(chatUid!!+"|"+uid!!+"|"+chatProductName!!) // 파이어베이스 Chatroom 테이블의 chatUid와 값이 같은 것 연결
-//        Log.d("chatUid_data",chatUid)
-//        Log.d("chatProduct_data",chatProductName)
-
 
         var Firebase_ProductName_Route = databaseReference.toString() // Firebase Chatroom/chatUid/chatProductName 경로 가져오기
         Log.d("Firebase_data", Firebase_ProductName_Route) // Firebase Chatroom/chatUid/chatProductName
 
         var Firebase_ProductName = Firebase_ProductName_Route.substring(Firebase_ProductName_Route.lastIndexOf("/")+1)
         Log.d("chat3_data", Firebase_ProductName) // Firebase_ProductName만 subString으로 가져오기
-
-//        var Firebase_ProductName = Firebase_ProductName_Route.substring(Firebase_ProductName_Route.lastIndexOf("%7C")+3)
-//        Log.d("chat3_data", Firebase_ProductName) // 상품이름
 
         chatBinding!!.recyclerView.adapter = chatAdapter //setAdapter
 

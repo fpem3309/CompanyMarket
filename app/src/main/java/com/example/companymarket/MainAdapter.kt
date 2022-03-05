@@ -28,7 +28,6 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder> () {
 
     // ViewHolder의 bind 메소드를 호출한다.
     override fun onBindViewHolder(holder: MainAdapter.ViewHolder, position: Int) {
-        //holder.bind(dataSet[position])
         holder.bind(arrayList[position])
     }
 
